@@ -2,6 +2,9 @@
 
 Simple webpage to test your Hiragana knowledge in just a few lines of code.
 
+### Screenshot
+
+<image src="https://raw.githubusercontent.com/at1as/at1as.github.io/master/github_repo_assets/hiragana-1.png">
 
 ### Data Source
 
