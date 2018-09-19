@@ -157,46 +157,55 @@ function updatePageForNextQuestion(symbolIndexes, hiraganaSymbols) {
   document.getElementById('answer-grader').innerHTML = '';
   document.getElementById('show-symbol').innerHTML 	 = targetValue;
 
-  while (answerOptions.hasChildNodes()) {
-    answerOptions.removeChild(answerOptions.lastChild);
-  }
-
-  ([""].concat(shuffle(quizAnswers))).forEach((el) => {
-    const opt     = document.createElement('option');
-    opt.value     = el;
-    opt.innerHTML = el;
-
-    answerOptions.appendChild(opt);
+  shuffle(quizAnswers).forEach((el, idx) => {
+    document.getElementById(`card-${idx+1}`).innerHTML = el;
+    document.getElementById(`card-container-${idx+1}`).style.backgroundColor = null;
   });
 }
 
-function grader() {
+function checkAnswer(num) {
   const question     = document.getElementById('show-symbol').innerHTML.trim();
   const targetAns    = hiragana[question];
-  const selectedAns  = document.getElementById('answer-options').value;
+  const selectedAns  = document.getElementById(`card-${num}`).innerHTML.trim();
   const answerGrader = document.getElementById('answer-grader');
-
-	if (selectedAns === "") {
-		return;
-	}
 
   if (selectedAns !== targetAns) {
     answerGrader.innerHTML = `<span style="color:red">"${selectedAns}" was Incorrect</span>`;
+    document.getElementById(`card-container-${num}`).style.backgroundColor = "red";
   } else {
     answerGrader.innerHTML = `<span style="color:green">"${targetAns}" was Correct</span>`;
+    document.getElementById(`card-container-${num}`).style.backgroundColor = "green";
   }
 }
 
 window.onload = function() {
   nextQuestion();
 
+  [1, 2, 3, 4].forEach((x) => {
+    document.getElementById(`card-container-${x}`).addEventListener("click", checkAnswer.bind(null, x))
+  });
+
   document.getElementById('answer-submit').addEventListener("click", nextQuestion);
-  document.getElementById('answer-options').addEventListener("click", grader);
   
   document.onkeydown = function(e) {
     switch (e.keyCode) {
-      case 39:
+      case 39: //left
         nextQuestion();
+        break;
+      case 19: //enter
+        nextQuestion();
+        break;
+      case 49: //1
+        checkAnswer(1);
+        break;
+      case 50: //2
+        checkAnswer(2);
+        break;
+      case 51: //3
+        checkAnswer(3);
+        break;
+      case 52:
+        checkAnswer(4);
         break;
     }
   }

@@ -7,7 +7,7 @@
     <script src="./quizLoader.js"></script>
   </head>
 
-  <body role="document">
+  <body role="document" style="background-color:#EFEFEF">
     <div style="text-align:center; margin-left:auto; margin-right:auto; padding-bottom: 30px">
       <h1>Hiragana Test</h1>
     
@@ -15,9 +15,34 @@
 
       <div id="answer-grader" style="font-size:30px; height:80px; font-weight:700;"></div>
 
-      <div><select id="answer-options" class="custom-select" style="max-width:200px"></select></div>
+			<div id="card-container">
+				<div id="card-container-1" class="card" style="width: 14rem; display:inline-block">
+					<div class="card-body">
+						<h5 class="card-title" style="text-align:left">1.</h5>
+						<p id="card-1" class="card-text" style="font-size:3rem"></p>
+					</div>
+				</div>
+				<div id="card-container-2" class="card" style="width: 14rem; display:inline-block">
+					<div class="card-body">
+						<h5 class="card-title" style="text-align:left">2.</h5>
+						<p id="card-2" class="card-text" style="font-size:3rem"></p>
+					</div>
+				</div>
+				<div id="card-container-3" class="card" style="width: 14rem; display:inline-block">
+					<div class="card-body">
+						<h5 class="card-title" style="text-align:left">3.</h5>
+						<p id="card-3" class="card-text" style="font-size:3rem"></p>
+					</div>
+				</div>
+				<div id="card-container-4" class="card" style="width: 14rem; display:inline-block">
+					<div class="card-body">
+						<h5 class="card-title" style="text-align:left">4.</h5>
+						<p id="card-4" class="card-text" style="font-size:3rem"></p>
+					</div>
+				</div>
+			</div>
 
-      <div style="margin:10px"><button type="button" id="answer-submit" class="btn btn-primary">Next Question</button></div>
+      <div style="margin:10px"><button type="button" id="answer-submit" class="btn btn-primary" style="margin-top:15px; width:25rem">Next Question</button></div>
 
     </div>
 
